@@ -407,12 +407,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   }
                 },
                 error: function error(_error) {
-                  console.log(_error.error.info);
+                  _this.loading = false;
 
-                  if (_error.error.info === "Invalid Floor Location Code") {
-                    _this.loading = false;
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error.error.info), 'error');
-                  } else if (_error.error.info === "Invalid token") {
+                  if (_error.status == 403) {
                     localStorage.clear();
                     sessionStorage.clear();
                     sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
@@ -420,6 +417,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     _this.router.navigate(['/'], {
                       queryParamsHandling: 'preserve'
                     });
+                  } else {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error.error.info), 'error');
                   }
                 }
               });
@@ -443,6 +442,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   }
                 },
                 error: function error(_error2) {
+                  _this.loading = false;
+
                   if (_error2.status == 403) {
                     localStorage.clear();
                     sessionStorage.clear();
@@ -462,6 +463,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "increaseQnt",
         value: function increaseQnt(SitemCode, SubCategoryCode) {
+          if (this.loading) {
+            return;
+          }
+
           this.totalamount = 0;
 
           for (var i = 0; i < this.menuData.length; i++) {
@@ -477,6 +482,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "decreaseQnt",
         value: function decreaseQnt(SitemCode, SubCategoryCode) {
+          if (this.loading) {
+            return;
+          }
+
           this.totalamount = 0;
 
           for (var i = 0; i < this.menuData.length; i++) {

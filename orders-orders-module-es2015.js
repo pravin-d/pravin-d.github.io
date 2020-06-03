@@ -204,16 +204,15 @@ class OrdersComponent {
                         }
                     },
                     error: error => {
-                        console.log(error.error.info);
-                        if (error.error.info === "Invalid Floor Location Code") {
-                            this.loading = false;
-                            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', `${error.error.info}`, 'error');
-                        }
-                        else if (error.error.info === "Invalid token") {
+                        this.loading = false;
+                        if (error.status == 403) {
                             localStorage.clear();
                             sessionStorage.clear();
                             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
                             this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+                        }
+                        else {
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', `${error.error.info}`, 'error');
                         }
                     }
                 });
@@ -233,6 +232,7 @@ class OrdersComponent {
                         }
                     },
                     error: error => {
+                        this.loading = false;
                         if (error.status == 403) {
                             localStorage.clear();
                             sessionStorage.clear();
@@ -248,6 +248,9 @@ class OrdersComponent {
         }
     }
     increaseQnt(SitemCode, SubCategoryCode) {
+        if (this.loading) {
+            return;
+        }
         this.totalamount = 0;
         for (let i = 0; i < this.menuData.length; i++) {
             for (let j = 0; j < this.menuData[i].Items.length; j++) {
@@ -260,6 +263,9 @@ class OrdersComponent {
         }
     }
     decreaseQnt(SitemCode, SubCategoryCode) {
+        if (this.loading) {
+            return;
+        }
         this.totalamount = 0;
         for (let i = 0; i < this.menuData.length; i++) {
             for (let j = 0; j < this.menuData[i].Items.length; j++) {

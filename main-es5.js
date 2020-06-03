@@ -740,15 +740,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               });
             },
             error: function error(_error) {
-              if (_error.error.info === '"Order being processed, please wait ."') {
-                _this2.loading = false;
-                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('done...', "".concat(_error.error.info), 'success');
-                sessionStorage.clear();
+              _this2.loading = false;
 
-                _this2.router.navigate(['/ending'], {
-                  queryParamsHandling: 'preserve'
-                });
-              } else if (_error.error.info === "Invalid token") {
+              if (_error.status == 403) {
                 localStorage.clear();
                 sessionStorage.clear();
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
@@ -756,6 +750,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this2.router.navigate(['/'], {
                   queryParamsHandling: 'preserve'
                 });
+              } else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Oops...', "".concat(_error.error.info), 'error');
               }
             }
           });
@@ -1189,6 +1185,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter all fields !', 'error');
           }
 
+          if (!this._globalService.encodedKey) {
+            return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Encodedkey is missing. Please check the url', 'error');
+          }
+
           this.loading = true;
 
           this._userService.getOTP(this.customerPhone, this.customerName).subscribe({
@@ -1208,7 +1208,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
             },
             error: function error(_error2) {
-              return console.log('There was an error!', _error2);
+              _this3.loading = false;
+
+              if (_error2.status == 403) {
+                localStorage.clear();
+                sessionStorage.clear();
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
+
+                _this3.router.navigate(['/'], {
+                  queryParamsHandling: 'preserve'
+                });
+              } else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error2.error.info), 'error');
+              }
             }
           });
         }
@@ -1608,22 +1620,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             otp = this.input1 + this.input2 + this.input3 + this.input4;
             this.loading = true;
 
-            this._userService.verifyOTP(parseInt(localStorage.getItem('customerPhone')), otp).subscribe(function (data) {
-              _this4.data = data;
-              console.log(_this4.data.body.data);
+            this._userService.verifyOTP(parseInt(localStorage.getItem('customerPhone')), otp).subscribe({
+              next: function next(data) {
+                _this4.data = data;
+                console.log(_this4.data.body.data);
 
-              if (_this4.data.body.data === true) {
-                localStorage.setItem('otpStatus', 'true');
-                _this4._globalService.otpStatus = true;
-                _this4._globalService.token = data.headers.get('token');
-                localStorage.setItem('token', data.headers.get('token'));
+                if (_this4.data.body.data === true) {
+                  localStorage.setItem('otpStatus', 'true');
+                  _this4._globalService.otpStatus = true;
+                  _this4._globalService.token = data.headers.get('token');
+                  localStorage.setItem('token', data.headers.get('token'));
+                  _this4.loading = false;
+
+                  _this4.router.navigate(['./menu'], {
+                    queryParamsHandling: 'preserve'
+                  });
+                } else {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter the valid otp!', 'error');
+                }
+              },
+              error: function error(_error3) {
                 _this4.loading = false;
 
-                _this4.router.navigate(['./menu'], {
-                  queryParamsHandling: 'preserve'
-                });
-              } else {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter the valid otp!', 'error');
+                if (_error3.status == 403) {
+                  localStorage.clear();
+                  sessionStorage.clear();
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
+
+                  _this4.router.navigate(['/'], {
+                    queryParamsHandling: 'preserve'
+                  });
+                } else {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error3.error.info), 'error');
+                }
               }
             });
           } else {
@@ -1871,7 +1900,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.idineUrl = idineUrl || "https://contactlessorder.innosolv-idine.com/api/ContactLessCustomerService";
           var storedEncodedKey = localStorage.getItem('encodedKey');
 
-          if (encodedKey && storedEncodedKey != encodedKey.trim()) {
+          if (encodedKey && storedEncodedKey !== encodedKey.trim()) {
             localStorage.clear();
             sessionStorage.clear();
             localStorage.setItem('encodedKey', encodedKey.trim()); // navigate(['/'], {queryParamsHandling : 'preserve'})

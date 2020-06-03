@@ -364,17 +364,15 @@ class FeedbackComponent {
                 this.router.navigate(['/ending'], { queryParamsHandling: 'preserve' });
             },
             error: error => {
-                if (error.error.info === '"Order being processed, please wait ."') {
-                    this.loading = false;
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('done...', `${error.error.info}`, 'success');
-                    sessionStorage.clear();
-                    this.router.navigate(['/ending'], { queryParamsHandling: 'preserve' });
-                }
-                else if (error.error.info === "Invalid token") {
+                this.loading = false;
+                if (error.status == 403) {
                     localStorage.clear();
                     sessionStorage.clear();
                     sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
                     this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+                }
+                else {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Oops...', `${error.error.info}`, 'error');
                 }
             }
         });
@@ -574,6 +572,9 @@ class LoginComponent {
         if (!this.customerPhone || !this.customerName) {
             return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter all fields !', 'error');
         }
+        if (!this._globalService.encodedKey) {
+            return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Encodedkey is missing. Please check the url', 'error');
+        }
         this.loading = true;
         this._userService
             .getOTP(this.customerPhone, this.customerName)
@@ -589,7 +590,18 @@ class LoginComponent {
                     this.router.navigate(['./verify'], { queryParamsHandling: 'preserve' });
                 }
             },
-            error: error => console.log('There was an error!', error)
+            error: error => {
+                this.loading = false;
+                if (error.status == 403) {
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
+                    this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+                }
+                else {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', `${error.error.info}`, 'error');
+                }
+            }
         });
     }
 }
@@ -783,19 +795,33 @@ class OtpVerifyComponent {
         if (this.input1 && this.input2 && this.input3 && this.input4) {
             otp = this.input1 + this.input2 + this.input3 + this.input4;
             this.loading = true;
-            this._userService.verifyOTP(parseInt(localStorage.getItem('customerPhone')), otp).subscribe(data => {
-                this.data = data;
-                console.log(this.data.body.data);
-                if (this.data.body.data === true) {
-                    localStorage.setItem('otpStatus', 'true');
-                    this._globalService.otpStatus = true;
-                    this._globalService.token = data.headers.get('token');
-                    localStorage.setItem('token', data.headers.get('token'));
+            this._userService.verifyOTP(parseInt(localStorage.getItem('customerPhone')), otp).subscribe({
+                next: data => {
+                    this.data = data;
+                    console.log(this.data.body.data);
+                    if (this.data.body.data === true) {
+                        localStorage.setItem('otpStatus', 'true');
+                        this._globalService.otpStatus = true;
+                        this._globalService.token = data.headers.get('token');
+                        localStorage.setItem('token', data.headers.get('token'));
+                        this.loading = false;
+                        this.router.navigate(['./menu'], { queryParamsHandling: 'preserve' });
+                    }
+                    else {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter the valid otp!', 'error');
+                    }
+                },
+                error: error => {
                     this.loading = false;
-                    this.router.navigate(['./menu'], { queryParamsHandling: 'preserve' });
-                }
-                else {
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter the valid otp!', 'error');
+                    if (error.status == 403) {
+                        localStorage.clear();
+                        sessionStorage.clear();
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
+                        this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+                    }
+                    else {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', `${error.error.info}`, 'error');
+                    }
                 }
             });
         }
@@ -915,7 +941,7 @@ class GlobalService {
         this.encodedKey = encodedKey || '30b50a19a9ba9ff736dd426acd0376011599ec29d8cb03bded87b317df253b31';
         this.idineUrl = idineUrl || "https://contactlessorder.innosolv-idine.com/api/ContactLessCustomerService";
         let storedEncodedKey = localStorage.getItem('encodedKey');
-        if (encodedKey && storedEncodedKey != encodedKey.trim()) {
+        if (encodedKey && storedEncodedKey !== encodedKey.trim()) {
             localStorage.clear();
             sessionStorage.clear();
             localStorage.setItem('encodedKey', encodedKey.trim());
