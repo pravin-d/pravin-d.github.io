@@ -938,7 +938,7 @@ class GlobalService {
         this.cartItem = [];
     }
     init(encodedKey, idineUrl, navigate) {
-        this.encodedKey = encodedKey || '30b50a19a9ba9ff736dd426acd0376011599ec29d8cb03bded87b317df253b31';
+        this.encodedKey = encodedKey;
         this.idineUrl = idineUrl || "https://contactlessorder.innosolv-idine.com/api/ContactLessCustomerService";
         let storedEncodedKey = localStorage.getItem('encodedKey');
         if (encodedKey && storedEncodedKey !== encodedKey.trim()) {

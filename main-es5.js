@@ -1896,7 +1896,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(GlobalService, [{
         key: "init",
         value: function init(encodedKey, idineUrl, navigate) {
-          this.encodedKey = encodedKey || '30b50a19a9ba9ff736dd426acd0376011599ec29d8cb03bded87b317df253b31';
+          this.encodedKey = encodedKey;
           this.idineUrl = idineUrl || "https://contactlessorder.innosolv-idine.com/api/ContactLessCustomerService";
           var storedEncodedKey = localStorage.getItem('encodedKey');
 
