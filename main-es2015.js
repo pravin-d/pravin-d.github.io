@@ -512,7 +512,7 @@ HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "button", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: [".header-class[_ngcontent-%COMP%]{\n    height: 80px;\n    background-color: #529685;\n}\n\n.header-btn[_ngcontent-%COMP%]{\n    background-color: #fff;\n    border: none;\n    color: white;\n    width: 100%;\n    padding: 18px;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    margin: 4px 2px;\n    border-radius: 25px;\n}\n\n.header-row[_ngcontent-%COMP%]{\n    padding: 8.5% 4%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLHlCQUF5QjtBQUM3Qjs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0QixZQUFZO0lBQ1osWUFBWTtJQUNaLFdBQVc7SUFDWCxhQUFhO0lBQ2Isa0JBQWtCO0lBQ2xCLHFCQUFxQjtJQUNyQixxQkFBcUI7SUFDckIsZUFBZTtJQUNmLGVBQWU7SUFDZixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZGVyLWNsYXNze1xuICAgIGhlaWdodDogODBweDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNTI5Njg1O1xufVxuXG4uaGVhZGVyLWJ0bntcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuICAgIGJvcmRlcjogbm9uZTtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgcGFkZGluZzogMThweDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICBmb250LXNpemU6IDE2cHg7XG4gICAgbWFyZ2luOiA0cHggMnB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDI1cHg7XG59XG5cbi5oZWFkZXItcm93e1xuICAgIHBhZGRpbmc6IDguNSUgNCU7XG59Il19 */"] });
+    } }, styles: [".header-class[_ngcontent-%COMP%] {\n  height: 50px;\n  background-color: #529685;\n}\n\n.header-btn[_ngcontent-%COMP%] {\n  background-color: #fff;\n  border: none;\n  color: white;\n  width: 100%;\n  padding: 18px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 4px 2px;\n  border-radius: 25px;\n  display: none;\n}\n\n.header-row[_ngcontent-%COMP%] {\n  padding: 8.5% 4%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBWTtFQUNaLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLHNCQUFzQjtFQUN0QixZQUFZO0VBQ1osWUFBWTtFQUNaLFdBQVc7RUFDWCxhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLHFCQUFxQjtFQUNyQixxQkFBcUI7RUFDckIsZUFBZTtFQUNmLGVBQWU7RUFDZixtQkFBbUI7RUFDbkIsYUFBYTtBQUNmOztBQUVBO0VBQ0UsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlci1jbGFzcyB7XG4gIGhlaWdodDogNTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzUyOTY4NTtcbn1cblxuLmhlYWRlci1idG4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuICBib3JkZXI6IG5vbmU7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDE4cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgbWFyZ2luOiA0cHggMnB4O1xuICBib3JkZXItcmFkaXVzOiAyNXB4O1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4uaGVhZGVyLXJvdyB7XG4gIHBhZGRpbmc6IDguNSUgNCU7XG59XG4iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HeaderComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -564,44 +564,47 @@ class LoginComponent {
         this.data = [];
     }
     ngOnInit() {
-        if (localStorage.getItem('token')) {
-            return this.router.navigate(['/menu'], { queryParamsHandling: 'preserve' });
+        if (localStorage.getItem("token")) {
+            return this.router.navigate(["/menu"], {
+                queryParamsHandling: "preserve",
+            });
         }
     }
     getOtp() {
         if (!this.customerPhone || !this.customerName) {
-            return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter all fields !', 'error');
+            return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Please enter all fields !", "error");
         }
         if (!this._globalService.encodedKey) {
-            return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Encodedkey is missing. Please check the url', 'error');
+            return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Encodedkey is missing. Please check the url", "error");
         }
         this.loading = true;
-        this._userService
-            .getOTP(this.customerPhone, this.customerName)
-            .subscribe({
+        this._userService.getOTP(this.customerPhone, this.customerName).subscribe({
             next: (data) => {
                 this.data = data;
                 if (this.data.info === "success") {
-                    localStorage.setItem('customerPhone', this.customerPhone.toString());
-                    localStorage.setItem('customerName', this.customerName);
+                    localStorage.setItem("customerPhone", this.customerPhone.toString());
+                    localStorage.setItem("customerName", this.customerName);
                     this._globalService.customerPhone = this.customerPhone;
                     this._globalService.loginStatus = true;
                     this.loading = false;
-                    this.router.navigate(['./verify'], { queryParamsHandling: 'preserve' });
+                    this.router.navigate(["./verify"], {
+                        queryParamsHandling: "preserve",
+                    });
                 }
             },
-            error: error => {
+            error: (error) => {
                 this.loading = false;
                 if (error.status == 403) {
                     localStorage.clear();
                     sessionStorage.clear();
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
-                    this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Session Expired ! Please login again.", "error");
+                    this.router.navigate(["/"], { queryParamsHandling: "preserve" });
                 }
                 else {
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', `${error.error.info}`, 'error');
+                    console.log(error.error);
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", `${error.error.info}`, "error");
                 }
-            }
+            },
         });
     }
 }
@@ -708,9 +711,9 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LoginComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
-                selector: 'app-login',
-                templateUrl: './login.component.html',
-                styleUrls: ['./login.component.css']
+                selector: "app-login",
+                templateUrl: "./login.component.html",
+                styleUrls: ["./login.component.css"],
             }]
     }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] }, { type: _service_global_service__WEBPACK_IMPORTED_MODULE_4__["GlobalService"] }]; }, null); })();
 

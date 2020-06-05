@@ -256,7 +256,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\u20B9", val_r34.Item_UOM[0].Qty * val_r34.Item_UOM[0].Rate, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" \u20B9", val_r34.Item_UOM[0].Qty * val_r34.Item_UOM[0].Rate, " ");
       }
     }
 
@@ -296,7 +296,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function OrdersComponent_div_33_Template(rf, ctx) {
+    function OrdersComponent_div_35_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 31);
 
@@ -322,40 +322,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.TableCode = "";
         this.tax = 200;
         this.res = [];
-        this.orderID = '';
+        this.orderID = "";
       }
 
       _createClass(OrdersComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          if (localStorage.getItem('otpStatus') == null) {
-            return this.router.navigate(['/'], {
-              queryParamsHandling: 'preserve'
+          if (localStorage.getItem("otpStatus") == null) {
+            return this.router.navigate(["/"], {
+              queryParamsHandling: "preserve"
             });
           }
 
-          this.menuData = JSON.parse(sessionStorage.getItem('menuData'));
+          this.menuData = JSON.parse(sessionStorage.getItem("menuData"));
 
-          if (sessionStorage.getItem('TableCode')) {
-            this.TableCode = sessionStorage.getItem('TableCode');
-            jquery__WEBPACK_IMPORTED_MODULE_2___default()("#tableno").prop('disabled', true);
+          if (sessionStorage.getItem("TableCode")) {
+            this.TableCode = sessionStorage.getItem("TableCode");
+            jquery__WEBPACK_IMPORTED_MODULE_2___default()("#tableno").prop("disabled", true);
           }
 
           this.fetchMenu();
-          this.customerName = localStorage.getItem('customerName');
+          this.customerName = localStorage.getItem("customerName");
         }
       }, {
         key: "fetchMenu",
         value: function fetchMenu() {
           this.cartItems = [];
-          this.menuData = JSON.parse(sessionStorage.getItem('menuData'));
+          this.menuData = JSON.parse(sessionStorage.getItem("menuData"));
 
           for (var i = 0; i < this.menuData.length; i++) {
             for (var j = 0; j < this.menuData[i].Items.length; j++) {
               if (this.menuData[i].Items[j].Item_UOM[0].Qty > 0) {
                 this.cartItems.push({
-                  'SitemCode': this.menuData[i].Items[j].SitemCode,
-                  'Qty': this.menuData[i].Items[j].Item_UOM[0].Qty
+                  SitemCode: this.menuData[i].Items[j].SitemCode,
+                  Qty: this.menuData[i].Items[j].Item_UOM[0].Qty
                 });
                 this.totalamount += this.menuData[i].Items[j].Item_UOM[0].Rate * this.menuData[i].Items[j].Item_UOM[0].Qty;
               }
@@ -365,10 +365,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.subtotal = this.totalamount; // this.totalamount +=this.tax
 
           if (this.totalamount === 0) {
-            return this.router.navigate(['/menu'], {
-              queryParamsHandling: 'preserve'
+            return this.router.navigate(["/menu"], {
+              queryParamsHandling: "preserve"
             });
           }
+        }
+      }, {
+        key: "menuRedirect",
+        value: function menuRedirect() {
+          this.router.navigate(["/menu"], {
+            queryParamsHandling: "preserve"
+          });
         }
       }, {
         key: "redirect",
@@ -376,19 +383,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           if (this.TableCode === undefined || this.TableCode === null || this.TableCode === "") {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Please enter table no !', 'error');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Please enter table no !", "error");
           } else {
             this.loading = true;
-            this.orderID = sessionStorage.getItem('orderID');
+            this.orderID = sessionStorage.getItem("orderID");
             console.log(this.orderID);
 
             if (this.orderID === null) {
               var body = {
-                "TableCode": this.TableCode,
-                "FloorLocation": sessionStorage.getItem('floorCode'),
-                "CustPhone": localStorage.getItem('customerPhone'),
-                "CustomerName": localStorage.getItem('customerName'),
-                "OrderItems": this.cartItems
+                TableCode: this.TableCode,
+                FloorLocation: sessionStorage.getItem("floorCode"),
+                CustPhone: localStorage.getItem("customerPhone"),
+                CustomerName: localStorage.getItem("customerName"),
+                OrderItems: this.cartItems
               };
 
               this._userService.placeOrder(body).subscribe({
@@ -397,12 +404,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   console.log(_this.res);
 
                   if (_this.res.error == false) {
-                    sessionStorage.setItem('TableCode', _this.TableCode);
-                    sessionStorage.setItem('orderID', _this.res.data);
+                    sessionStorage.setItem("TableCode", _this.TableCode);
+                    sessionStorage.setItem("orderID", _this.res.data);
                     _this.loading = false;
 
-                    _this.router.navigate(['/feedback'], {
-                      queryParamsHandling: 'preserve'
+                    _this.router.navigate(["/feedback"], {
+                      queryParamsHandling: "preserve"
                     });
                   }
                 },
@@ -412,20 +419,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   if (_error.status == 403) {
                     localStorage.clear();
                     sessionStorage.clear();
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Session Expired ! Please login again.", "error");
 
-                    _this.router.navigate(['/'], {
-                      queryParamsHandling: 'preserve'
+                    _this.router.navigate(["/"], {
+                      queryParamsHandling: "preserve"
                     });
                   } else {
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error.error.info), 'error');
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "".concat(_error.error.info), "error");
                   }
                 }
               });
             } else {
               var bodyData = {
-                "OrderNumber": this.orderID,
-                "OrderItems": this.cartItems
+                OrderNumber: this.orderID,
+                OrderItems: this.cartItems
               };
 
               this._userService.modifyOrder(bodyData).subscribe({
@@ -433,11 +440,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this.res = data;
 
                   if (_this.res.error == false) {
-                    sessionStorage.setItem('orderID', _this.res.data);
+                    sessionStorage.setItem("orderID", _this.res.data);
                     _this.loading = false;
 
-                    _this.router.navigate(['/feedback'], {
-                      queryParamsHandling: 'preserve'
+                    _this.router.navigate(["/feedback"], {
+                      queryParamsHandling: "preserve"
                     });
                   }
                 },
@@ -447,13 +454,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   if (_error2.status == 403) {
                     localStorage.clear();
                     sessionStorage.clear();
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Session Expired ! Please login again.", "error");
 
-                    _this.router.navigate(['/'], {
-                      queryParamsHandling: 'preserve'
+                    _this.router.navigate(["/"], {
+                      queryParamsHandling: "preserve"
                     });
                   } else {
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error2.error.info), 'error');
+                    console.log(_error2.error);
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "".concat(_error2.error.info), "error");
                   }
                 }
               });
@@ -507,8 +515,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function logout() {
           localStorage.clear();
           sessionStorage.clear();
-          this.router.navigate(['/'], {
-            queryParamsHandling: 'preserve'
+          this.router.navigate(["/"], {
+            queryParamsHandling: "preserve"
           });
         }
       }]);
@@ -523,7 +531,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     OrdersComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: OrdersComponent,
       selectors: [["app-orders"]],
-      decls: 38,
+      decls: 40,
       vars: 5,
       consts: [[1, "container-fluid"], [1, "row"], [1, "col-xs-3"], ["src", "../../assets/image/logo.png", "alt", ""], [1, "col-xs-6", 2, "margin", "auto"], [1, "welcom-people"], [1, "col-xs-3", 2, "margin", "auto"], [1, "fa", "fa-sign-out", 2, "color", "red", 3, "click"], [1, "order-summary-btn"], ["class", "row", 4, "ngFor", "ngForOf"], [1, "col-xs-12", "col-sm-12", 2, "margin-top", "5%"], [1, "row", "t-center"], [1, "col-xs-4"], [2, "font-size", "14px", "color", "#529685", "font-weight", "600", "text-align", "left", "margin-left", "15%"], [1, "rate"], [1, "row", 2, "margin", "0 auto"], [2, "width", "100%", "margin", "0 auto", "text-align", "center"], [1, "inline", 2, "margin-right", "6px"], [1, "inline"], ["type", "text", "id", "tableno", 1, "tbl-no", 3, "ngModel", "ngModelChange"], [1, "place-order", 2, "position", "relative", 3, "click"], ["id", "loading-bar-spinner", "class", "spinner", 4, "ngIf"], [1, "on-place-order"], ["class", "col-sm-12 col-xs-12", 4, "ngFor", "ngForOf"], [1, "col-sm-12", "col-xs-12"], [4, "ngIf"], [1, "row", "t-center", 2, "margin-bottom", "5%"], [1, "displayname"], [1, "addbtn"], [3, "click"], [2, "margin-left", "8px", 3, "click"], ["id", "loading-bar-spinner", 1, "spinner"], [1, "spinner-icon"]],
       template: function OrdersComponent_Template(rf, ctx) {
@@ -580,7 +588,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "p", 13);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Total Amount");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, " Total Amount ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -639,22 +647,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 20);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function OrdersComponent_Template_button_click_31_listener() {
-            return ctx.redirect();
+            return ctx.menuRedirect();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, " Place Order");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, OrdersComponent_div_33_Template, 2, 0, "div", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, " Go To Menu ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "p", 22);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 20);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, "On placing the order, our server will");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function OrdersComponent_Template_button_click_33_listener() {
+            return ctx.redirect();
+          });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](36, "br");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, " Place Order ");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "attend to you shortly");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](35, OrdersComponent_div_35_Template, 2, 0, "div", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "p", 22);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, " On placing the order, our server will");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "attend to you shortly ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -682,7 +700,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.TableCode);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.loading);
         }
@@ -696,9 +714,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](OrdersComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
-          selector: 'app-orders',
-          templateUrl: './orders.component.html',
-          styleUrls: ['./orders.component.css']
+          selector: "app-orders",
+          templateUrl: "./orders.component.html",
+          styleUrls: ["./orders.component.css"]
         }]
       }], function () {
         return [{
