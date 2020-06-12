@@ -1601,8 +1601,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "setFocus",
-        value: function setFocus(elem) {
-          elem.focus();
+        value: function setFocus(value, nextElement) {
+          if (value === 0 || value) nextElement.focus();
         }
       }, {
         key: "onEnter",
@@ -1675,7 +1675,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-otp-verify"]],
       decls: 31,
       vars: 6,
-      consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12", "logo-div"], ["src", "../../assets/image/logo.png", "alt", ""], [1, "col-sm-12", "app-info", "t-center"], [1, "col-sm-12", "t-center"], [1, "enter-otp-p"], [1, "col-sm-12", "otp-box", "t-center"], ["method", "get", "data-group-name", "digits", "data-autosubmit", "false", "autocomplete", "off", 1, "digit-group"], ["type", "number", "id", "digit-1", "name", "digit-1", "data-next", "digit-2", "tabIndex", "1", 3, "ngModel", "ngModelChange", "keyup"], ["a", ""], ["type", "number", "id", "digit-2", "name", "digit-2", "data-next", "digit-3", "data-previous", "digit-1", "tabIndex", "2", 3, "ngModel", "ngModelChange", "keyup"], ["b", ""], ["type", "number", "id", "digit-3", "name", "digit-3", "data-next", "digit-4", "data-previous", "digit-2", "tabIndex", "3", 3, "ngModel", "ngModelChange", "keyup"], ["c", ""], ["type", "number", "id", "digit-4", "name", "digit-4", "data-next", "digit-5", "data-previous", "digit-3", "tabIndex", "4", 3, "ngModel", "ngModelChange"], ["d", ""], [1, "otp-verify-btn", 3, "click"], ["id", "loading-bar-spinner", "class", "spinner", 4, "ngIf"], [1, "resend", 3, "click"], ["id", "loading-bar-spinner", 1, "spinner"], [1, "spinner-icon"]],
+      consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12", "logo-div"], ["src", "../../assets/image/logo.png", "alt", ""], [1, "col-sm-12", "app-info", "t-center"], [1, "col-sm-12", "t-center"], [1, "enter-otp-p"], [1, "col-sm-12", "otp-box", "t-center"], ["method", "get", "data-group-name", "digits", "data-autosubmit", "false", "autocomplete", "off", 1, "digit-group"], ["type", "number", "id", "digit-1", "name", "digit-1", "data-next", "digit-2", "tabIndex", "1", 3, "ngModel", "ngModelChange"], ["a", ""], ["type", "number", "id", "digit-2", "name", "digit-2", "data-next", "digit-3", "data-previous", "digit-1", "tabIndex", "2", 3, "ngModel", "ngModelChange"], ["b", ""], ["type", "number", "id", "digit-3", "name", "digit-3", "data-next", "digit-4", "data-previous", "digit-2", "tabIndex", "3", 3, "ngModel", "ngModelChange"], ["c", ""], ["type", "number", "id", "digit-4", "name", "digit-4", "data-next", "digit-5", "data-previous", "digit-3", "tabIndex", "4", 3, "ngModel", "ngModelChange"], ["d", ""], [1, "otp-verify-btn", 3, "click"], ["id", "loading-bar-spinner", "class", "spinner", 4, "ngIf"], [1, "resend", 3, "click"], ["id", "loading-bar-spinner", 1, "spinner"], [1, "spinner-icon"]],
       template: function OtpVerifyComponent_Template(rf, ctx) {
         if (rf & 1) {
           var _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -1724,12 +1724,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function OtpVerifyComponent_Template_input_ngModelChange_14_listener($event) {
             return ctx.input1 = $event;
-          })("keyup", function OtpVerifyComponent_Template_input_keyup_14_listener() {
+          })("ngModelChange", function OtpVerifyComponent_Template_input_ngModelChange_14_listener($event) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6);
 
             var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](17);
 
-            return ctx.setFocus(_r2);
+            return ctx.setFocus($event, _r2);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1738,12 +1738,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function OtpVerifyComponent_Template_input_ngModelChange_16_listener($event) {
             return ctx.input2 = $event;
-          })("keyup", function OtpVerifyComponent_Template_input_keyup_16_listener() {
+          })("ngModelChange", function OtpVerifyComponent_Template_input_ngModelChange_16_listener($event) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6);
 
             var _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](19);
 
-            return ctx.setFocus(_r3);
+            return ctx.setFocus($event, _r3);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1752,12 +1752,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function OtpVerifyComponent_Template_input_ngModelChange_18_listener($event) {
             return ctx.input3 = $event;
-          })("keyup", function OtpVerifyComponent_Template_input_keyup_18_listener() {
+          })("ngModelChange", function OtpVerifyComponent_Template_input_ngModelChange_18_listener($event) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6);
 
             var _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](21);
 
-            return ctx.setFocus(_r4);
+            return ctx.setFocus($event, _r4);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
