@@ -549,9 +549,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this.router.navigate(["/"], {
                     queryParamsHandling: "preserve"
                   });
+                } else if (_error && _error.error && _error.error.data) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error.error.data), 'error');
+                } else if (_error && _error.error && _error.error.info) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error.error.info), 'error');
                 } else {
-                  console.log(_error.error);
-                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "".concat(_error.error.info), "error");
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Invalid Action', 'error');
                 }
               }
             });

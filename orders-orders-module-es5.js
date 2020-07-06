@@ -158,11 +158,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 27);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p", 28);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
 
@@ -172,9 +172,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function OrdersComponent_div_11_div_1_div_1_Template_span_click_7_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r59);
@@ -196,7 +196,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "span", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "span", 31);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function OrdersComponent_div_11_div_1_div_1_Template_span_click_11_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r59);
@@ -250,9 +250,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function OrdersComponent_div_11_div_1_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 25);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, OrdersComponent_div_11_div_1_div_1_Template, 16, 3, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, OrdersComponent_div_11_div_1_div_1_Template, 16, 3, "div", 26);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -270,7 +270,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, OrdersComponent_div_11_div_1_Template, 2, 1, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, OrdersComponent_div_11_div_1_Template, 2, 1, "div", 24);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -286,9 +286,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function OrdersComponent_div_35_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 32);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 33);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -523,8 +523,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       type: OrdersComponent,
       selectors: [["app-orders"]],
       decls: 40,
-      vars: 6,
-      consts: [[1, "container-fluid"], [1, "row"], [1, "col-xs-3"], ["src", "../../assets/image/logo.png", "alt", ""], [1, "col-xs-6", 2, "margin", "auto"], [1, "welcom-people"], [1, "col-xs-3", 2, "margin", "auto"], [1, "fa", "fa-sign-out", 2, "color", "red", 3, "click"], [1, "order-summary-btn"], ["class", "row", 4, "ngFor", "ngForOf"], [1, "col-xs-12", "col-sm-12", 2, "margin-top", "5%"], [1, "row", "t-center"], [1, "col-xs-4"], [2, "font-size", "14px", "color", "#529685", "font-weight", "600", "text-align", "left", "margin-left", "15%"], [1, "rate"], [1, "row", 2, "margin", "0 auto"], [2, "width", "100%", "margin", "0 auto", "text-align", "center"], [1, "inline", 2, "margin-right", "6px"], [1, "inline"], ["type", "text", "id", "tableno", 1, "tbl-no", 3, "ngModel", "disabled", "ngModelChange"], [1, "place-order", 2, "position", "relative", 3, "click"], ["id", "loading-bar-spinner", "class", "spinner", 4, "ngIf"], [1, "on-place-order"], ["class", "col-sm-12 col-xs-12", 4, "ngFor", "ngForOf"], [1, "col-sm-12", "col-xs-12"], [4, "ngIf"], [1, "row", "t-center", 2, "margin-bottom", "5%"], [1, "displayname"], [1, "addbtn"], [3, "click"], [2, "margin-left", "8px", 3, "click"], ["id", "loading-bar-spinner", 1, "spinner"], [1, "spinner-icon"]],
+      vars: 7,
+      consts: [[1, "container-fluid"], [1, "row"], [1, "col-xs-3"], ["src", "../../assets/image/logo.png", "alt", ""], [1, "col-xs-6", 2, "margin", "auto"], [1, "welcom-people"], [1, "col-xs-3", 2, "margin", "auto"], [1, "fa", "fa-sign-out", 2, "color", "red", 3, "click"], [1, "order-summary-btn"], ["class", "row", 4, "ngFor", "ngForOf"], [1, "col-xs-12", "col-sm-12", 2, "margin-top", "5%"], [1, "row", "t-center"], [1, "col-xs-4"], [2, "font-size", "14px", "color", "#529685", "font-weight", "600", "text-align", "left", "margin-left", "15%"], [1, "rate"], [1, "row", 2, "margin", "0 auto"], [2, "width", "100%", "margin", "0 auto", "text-align", "center"], [1, "inline", 2, "margin-right", "6px"], [1, "inline"], ["type", "text", "id", "tableno", 1, "tbl-no", 3, "ngModel", "disabled", "ngModelChange"], [1, "place-order", 2, "position", "relative", 3, "click"], [1, "place-order", 2, "position", "relative", 3, "disabled", "click"], ["id", "loading-bar-spinner", "class", "spinner", 4, "ngIf"], [1, "on-place-order"], ["class", "col-sm-12 col-xs-12", 4, "ngFor", "ngForOf"], [1, "col-sm-12", "col-xs-12"], [4, "ngIf"], [1, "row", "t-center", 2, "margin-bottom", "5%"], [1, "displayname"], [1, "addbtn"], [3, "click"], [2, "margin-left", "8px", 3, "click"], ["id", "loading-bar-spinner", 1, "spinner"], [1, "spinner-icon"]],
       template: function OrdersComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -645,7 +645,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 21);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function OrdersComponent_Template_button_click_33_listener() {
             return ctx.redirect();
@@ -653,11 +653,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, " Place Order ");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](35, OrdersComponent_div_35_Template, 2, 0, "div", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](35, OrdersComponent_div_35_Template, 2, 0, "div", 22);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "p", 22);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "p", 23);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, " On placing the order, our server will");
 
@@ -691,7 +691,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.TableCode)("disabled", ctx.disableTableNo);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.loading);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.loading);
         }

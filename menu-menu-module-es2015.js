@@ -264,9 +264,14 @@ class MenuComponent {
                         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Session Expired ! Please login again.", "error");
                         this.router.navigate(["/"], { queryParamsHandling: "preserve" });
                     }
+                    else if (error && error.error && error.error.data) {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', `${error.error.data}`, 'error');
+                    }
+                    else if (error && error.error && error.error.info) {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', `${error.error.info}`, 'error');
+                    }
                     else {
-                        console.log(error.error);
-                        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", `${error.error.info}`, "error");
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Invalid Action', 'error');
                     }
                 },
             });

@@ -853,8 +853,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this3.router.navigate(['/'], {
                   queryParamsHandling: 'preserve'
                 });
-              } else {
+              } else if (_error && _error.error && _error.error.data) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error.error.data), 'error');
+              } else if (_error && _error.error && _error.error.info) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error.error.info), 'error');
+              } else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Invalid Action', 'error');
               }
             }
           });
@@ -1070,9 +1074,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function FeedbackComponent_div_28_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 20);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -1143,8 +1147,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this4.router.navigate(['/'], {
                   queryParamsHandling: 'preserve'
                 });
-              } else {
+              } else if (_error2 && _error2.error && _error2.error.data) {
+                if (_error2.error.data == "Bill is already generated" || _error2.error.data == '"Bill is already generated"') {
+                  _this4.router.navigate(['/ending'], {
+                    queryParamsHandling: 'preserve'
+                  });
+                } else {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error2.error.data), 'error');
+                }
+              } else if (_error2 && _error2.error && _error2.error.info) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', "".concat(_error2.error.info), 'error');
+              } else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Invalid Action', 'error');
               }
             }
           });
@@ -1184,8 +1198,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       type: FeedbackComponent,
       selectors: [["app-feedback"]],
       decls: 35,
-      vars: 22,
-      consts: [[1, "container-fluid"], [1, "row"], [1, "col-xs-4"], ["src", "../../assets/image/logo.png", "alt", ""], [1, "col-xs-4", 2, "margin", "auto"], [1, "welcom-people"], [1, "fa", "fa-sign-out", 2, "color", "red", 3, "click"], [1, "row", "feedback-success"], [1, "col-sm-12", "t-center"], [1, "col-sm-12", "t-center", "star-i"], ["id", "rating1", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating2", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating3", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating4", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating5", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], [1, "req-bill", 2, "position", "relative", 3, "click"], ["id", "loading-bar-spinner", "class", "spinner", 4, "ngIf"], [1, "req-bill-p"], ["id", "loading-bar-spinner", 1, "spinner"], [1, "spinner-icon"]],
+      vars: 23,
+      consts: [[1, "container-fluid"], [1, "row"], [1, "col-xs-4"], ["src", "../../assets/image/logo.png", "alt", ""], [1, "col-xs-4", 2, "margin", "auto"], [1, "welcom-people"], [1, "fa", "fa-sign-out", 2, "color", "red", 3, "click"], [1, "row", "feedback-success"], [1, "col-sm-12", "t-center"], [1, "col-sm-12", "t-center", "star-i"], ["id", "rating1", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating2", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating3", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating4", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], ["id", "rating5", 1, "fa", "fa-star", "startcolor1", 3, "ngClass", "click"], [1, "req-bill", 2, "position", "relative", 3, "disabled", "click"], ["id", "loading-bar-spinner", "class", "spinner", 4, "ngIf"], [1, "req-bill", 2, "position", "relative", 3, "click"], [1, "req-bill-p"], ["id", "loading-bar-spinner", 1, "spinner"], [1, "spinner-icon"]],
       template: function FeedbackComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1304,7 +1318,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return ctx.redirect();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, "REQUEST BILL");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, " REQUEST BILL ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](28, FeedbackComponent_div_28_Template, 2, 0, "div", 16);
 
@@ -1314,7 +1328,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "button", 15);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "button", 17);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FeedbackComponent_Template_button_click_30_listener() {
             return ctx.redirectToMenu();
@@ -1330,7 +1344,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "p", 17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "p", 18);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Please request for your bill once you have finished your meal");
 
@@ -1348,25 +1362,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](7, _c0, ctx.ratingNo < 1, ctx.ratingNo >= 1));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](8, _c0, ctx.ratingNo < 1, ctx.ratingNo >= 1));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](10, _c0, ctx.ratingNo < 2, ctx.ratingNo >= 2));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](11, _c0, ctx.ratingNo < 2, ctx.ratingNo >= 2));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](13, _c0, ctx.ratingNo < 3, ctx.ratingNo >= 3));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](14, _c0, ctx.ratingNo < 3, ctx.ratingNo >= 3));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](16, _c0, ctx.ratingNo < 4, ctx.ratingNo >= 4));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](17, _c0, ctx.ratingNo < 4, ctx.ratingNo >= 4));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](19, _c0, ctx.ratingNo < 5, ctx.ratingNo >= 5));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](20, _c0, ctx.ratingNo < 5, ctx.ratingNo >= 5));
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx.loading);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.loading);
         }
