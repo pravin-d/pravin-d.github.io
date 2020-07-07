@@ -875,10 +875,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "logout",
         value: function logout() {
-          localStorage.clear();
-          sessionStorage.clear();
-          this.router.navigate(['/'], {
-            queryParamsHandling: 'preserve'
+          var _this4 = this;
+
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: "Logout",
+            text: "Are you sure you want to logout ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout'
+          }).then(function (result) {
+            if (result.value) {
+              localStorage.clear();
+              sessionStorage.clear();
+
+              _this4.router.navigate(['/'], {
+                queryParamsHandling: 'preserve'
+              });
+            }
           });
         }
       }]);
@@ -1120,36 +1133,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "redirect",
         value: function redirect() {
-          var _this4 = this;
+          var _this5 = this;
 
           this.loading = true;
 
           this._userService.requestBill(sessionStorage.getItem('orderID')).subscribe({
             next: function next(result) {
-              _this4.loading = false;
+              _this5.loading = false;
               var details = JSON.parse(JSON.stringify(result['data']));
               details.paymentStatus = 0;
               details.server_status = 0;
               localStorage.setItem('billDetails', JSON.stringify(details));
 
-              _this4.router.navigate(['/ending'], {
+              _this5.router.navigate(['/ending'], {
                 queryParamsHandling: 'preserve'
               });
             },
             error: function error(_error2) {
-              _this4.loading = false;
+              _this5.loading = false;
 
               if (_error2.status == 403) {
                 localStorage.clear();
                 sessionStorage.clear();
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
 
-                _this4.router.navigate(['/'], {
+                _this5.router.navigate(['/'], {
                   queryParamsHandling: 'preserve'
                 });
               } else if (_error2 && _error2.error && _error2.error.data) {
                 if (_error2.error.data == "Bill is already generated" || _error2.error.data == '"Bill is already generated"') {
-                  _this4.router.navigate(['/ending'], {
+                  _this5.router.navigate(['/ending'], {
                     queryParamsHandling: 'preserve'
                   });
                 } else {
@@ -1179,10 +1192,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "logout",
         value: function logout() {
-          localStorage.clear();
-          sessionStorage.clear();
-          this.router.navigate(['/'], {
-            queryParamsHandling: 'preserve'
+          var _this6 = this;
+
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: "Logout",
+            text: "Are you sure you want to logout ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout'
+          }).then(function (result) {
+            if (result.value) {
+              localStorage.clear();
+              sessionStorage.clear();
+
+              _this6.router.navigate(['/'], {
+                queryParamsHandling: 'preserve'
+              });
+            }
           });
         }
       }]);
@@ -1600,7 +1626,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOtp",
         value: function getOtp() {
-          var _this5 = this;
+          var _this7 = this;
 
           if (!this.customerPhone || !this.customerName) {
             return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Please enter all fields !", "error");
@@ -1614,29 +1640,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this._userService.getOTP(this.customerPhone, this.customerName).subscribe({
             next: function next(data) {
-              _this5.data = data;
+              _this7.data = data;
 
-              if (_this5.data.info === "success") {
-                localStorage.setItem("customerPhone", _this5.customerPhone.toString());
-                localStorage.setItem("customerName", _this5.customerName);
-                _this5._globalService.customerPhone = _this5.customerPhone;
-                _this5._globalService.loginStatus = true;
-                _this5.loading = false;
+              if (_this7.data.info === "success") {
+                localStorage.setItem("customerPhone", _this7.customerPhone.toString());
+                localStorage.setItem("customerName", _this7.customerName);
+                _this7._globalService.customerPhone = _this7.customerPhone;
+                _this7._globalService.loginStatus = true;
+                _this7.loading = false;
 
-                _this5.router.navigate(["./verify"], {
+                _this7.router.navigate(["./verify"], {
                   queryParamsHandling: "preserve"
                 });
               }
             },
             error: function error(_error3) {
-              _this5.loading = false;
+              _this7.loading = false;
 
               if (_error3.status == 403) {
                 localStorage.clear();
                 sessionStorage.clear();
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("Oops...", "Session Expired ! Please login again.", "error");
 
-                _this5.router.navigate(["/"], {
+                _this7.router.navigate(["/"], {
                   queryParamsHandling: "preserve"
                 });
               } else {
@@ -2023,7 +2049,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onEnter",
         value: function onEnter() {
-          var _this6 = this;
+          var _this8 = this;
 
           var otp = "";
 
@@ -2033,17 +2059,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             this._userService.verifyOTP(parseInt(localStorage.getItem('customerPhone')), otp).subscribe({
               next: function next(data) {
-                _this6.data = data;
-                console.log(_this6.data.body.data);
+                _this8.data = data;
+                console.log(_this8.data.body.data);
 
-                if (_this6.data.body.data === true) {
+                if (_this8.data.body.data === true) {
                   localStorage.setItem('otpStatus', 'true');
-                  _this6._globalService.otpStatus = true;
-                  _this6._globalService.token = data.headers.get('token');
+                  _this8._globalService.otpStatus = true;
+                  _this8._globalService.token = data.headers.get('token');
                   localStorage.setItem('token', data.headers.get('token'));
-                  _this6.loading = false;
+                  _this8.loading = false;
 
-                  _this6.router.navigate(['./menu'], {
+                  _this8.router.navigate(['./menu'], {
                     queryParamsHandling: 'preserve'
                   });
                 } else {
@@ -2051,14 +2077,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
               },
               error: function error(_error4) {
-                _this6.loading = false;
+                _this8.loading = false;
 
                 if (_error4.status == 403) {
                   localStorage.clear();
                   sessionStorage.clear();
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Oops...', 'Session Expired ! Please login again.', 'error');
 
-                  _this6.router.navigate(['/'], {
+                  _this8.router.navigate(['/'], {
                     queryParamsHandling: 'preserve'
                   });
                 } else {

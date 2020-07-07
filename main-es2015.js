@@ -463,9 +463,20 @@ class EndingComponent {
         this.router.navigate(['/menu'], { queryParamsHandling: 'preserve' });
     }
     logout() {
-        localStorage.clear();
-        sessionStorage.clear();
-        this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: "Logout",
+            text: "Are you sure you want to logout ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout'
+        })
+            .then((result) => {
+            if (result.value) {
+                localStorage.clear();
+                sessionStorage.clear();
+                this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+            }
+        });
     }
 }
 EndingComponent.ɵfac = function EndingComponent_Factory(t) { return new (t || EndingComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"])); };
@@ -615,9 +626,20 @@ class FeedbackComponent {
         this.ratingNo = no;
     }
     logout() {
-        localStorage.clear();
-        sessionStorage.clear();
-        this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: "Logout",
+            text: "Are you sure you want to logout ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout'
+        })
+            .then((result) => {
+            if (result.value) {
+                localStorage.clear();
+                sessionStorage.clear();
+                this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+            }
+        });
     }
 }
 FeedbackComponent.ɵfac = function FeedbackComponent_Factory(t) { return new (t || FeedbackComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"])); };

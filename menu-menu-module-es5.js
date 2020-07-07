@@ -638,10 +638,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "logout",
         value: function logout() {
-          localStorage.clear();
-          sessionStorage.clear();
-          this.router.navigate(["/"], {
-            queryParamsHandling: "preserve"
+          var _this2 = this;
+
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: "Logout",
+            text: "Are you sure you want to logout ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout'
+          }).then(function (result) {
+            if (result.value) {
+              localStorage.clear();
+              sessionStorage.clear();
+
+              _this2.router.navigate(['/'], {
+                queryParamsHandling: 'preserve'
+              });
+            }
           });
         }
       }]);

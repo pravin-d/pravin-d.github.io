@@ -336,6 +336,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.customerName = localStorage.getItem("customerName");
         }
       }, {
+        key: "resetCartItems",
+        value: function resetCartItems() {
+          this.cartItems = [];
+          this.totalamount = 0;
+          this.menuData = JSON.parse(sessionStorage.getItem("menuData"));
+
+          for (var i = 0; i < this.menuData.length; i++) {
+            for (var j = 0; j < this.menuData[i].Items.length; j++) {
+              if (this.menuData[i].Items[j].Item_UOM[0].Qty > 0) {
+                this.menuData[i].Items[j].Item_UOM[0].Qty = 0;
+              }
+            }
+          }
+
+          sessionStorage.setItem("menuData", JSON.stringify(this.menuData));
+        }
+      }, {
         key: "fetchMenu",
         value: function fetchMenu() {
           this.cartItems = [];
@@ -351,6 +368,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.totalamount += this.menuData[i].Items[j].Item_UOM[0].Rate * this.menuData[i].Items[j].Item_UOM[0].Qty;
               }
             }
+          }
+
+          if (!this.cartItems.length) {
+            this.router.navigate(["/menu"], {
+              queryParamsHandling: "preserve",
+              replaceUrl: true
+            });
+            return;
           }
 
           this.subtotal = this.totalamount; // this.totalamount +=this.tax
@@ -392,6 +417,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this._userService.placeOrder(body).subscribe({
                 next: function next(data) {
                   _this.res = data;
+
+                  _this.resetCartItems();
+
                   console.log(_this.res);
 
                   if (_this.res.error == false) {
@@ -400,7 +428,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     _this.loading = false;
 
                     _this.router.navigate(["/feedback"], {
-                      queryParamsHandling: "preserve"
+                      queryParamsHandling: "preserve",
+                      replaceUrl: true
                     });
                   }
                 },
@@ -430,12 +459,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 next: function next(data) {
                   _this.res = data;
 
+                  _this.resetCartItems();
+
                   if (_this.res.error == false) {
                     sessionStorage.setItem("orderID", _this.res.data);
                     _this.loading = false;
 
                     _this.router.navigate(["/feedback"], {
-                      queryParamsHandling: "preserve"
+                      queryParamsHandling: "preserve",
+                      replaceUrl: true
                     });
                   }
                 },
@@ -504,10 +536,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "logout",
         value: function logout() {
-          localStorage.clear();
-          sessionStorage.clear();
-          this.router.navigate(["/"], {
-            queryParamsHandling: "preserve"
+          var _this2 = this;
+
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: "Logout",
+            text: "Are you sure you want to logout ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout'
+          }).then(function (result) {
+            if (result.value) {
+              localStorage.clear();
+              sessionStorage.clear();
+
+              _this2.router.navigate(['/'], {
+                queryParamsHandling: 'preserve'
+              });
+            }
           });
         }
       }]);

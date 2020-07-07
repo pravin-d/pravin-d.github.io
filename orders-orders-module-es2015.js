@@ -153,6 +153,19 @@ class OrdersComponent {
         this.fetchMenu();
         this.customerName = localStorage.getItem("customerName");
     }
+    resetCartItems() {
+        this.cartItems = [];
+        this.totalamount = 0;
+        this.menuData = JSON.parse(sessionStorage.getItem("menuData"));
+        for (let i = 0; i < this.menuData.length; i++) {
+            for (let j = 0; j < this.menuData[i].Items.length; j++) {
+                if (this.menuData[i].Items[j].Item_UOM[0].Qty > 0) {
+                    this.menuData[i].Items[j].Item_UOM[0].Qty = 0;
+                }
+            }
+        }
+        sessionStorage.setItem("menuData", JSON.stringify(this.menuData));
+    }
     fetchMenu() {
         this.cartItems = [];
         this.menuData = JSON.parse(sessionStorage.getItem("menuData"));
@@ -168,6 +181,13 @@ class OrdersComponent {
                             this.menuData[i].Items[j].Item_UOM[0].Qty;
                 }
             }
+        }
+        if (!this.cartItems.length) {
+            this.router.navigate(["/menu"], {
+                queryParamsHandling: "preserve",
+                replaceUrl: true
+            });
+            return;
         }
         this.subtotal = this.totalamount;
         // this.totalamount +=this.tax
@@ -201,6 +221,7 @@ class OrdersComponent {
                 this._userService.placeOrder(body).subscribe({
                     next: (data) => {
                         this.res = data;
+                        this.resetCartItems();
                         console.log(this.res);
                         if (this.res.error == false) {
                             sessionStorage.setItem("TableCode", this.TableCode);
@@ -208,6 +229,7 @@ class OrdersComponent {
                             this.loading = false;
                             this.router.navigate(["/feedback"], {
                                 queryParamsHandling: "preserve",
+                                replaceUrl: true
                             });
                         }
                     },
@@ -233,11 +255,13 @@ class OrdersComponent {
                 this._userService.modifyOrder(bodyData).subscribe({
                     next: (data) => {
                         this.res = data;
+                        this.resetCartItems();
                         if (this.res.error == false) {
                             sessionStorage.setItem("orderID", this.res.data);
                             this.loading = false;
                             this.router.navigate(["/feedback"], {
                                 queryParamsHandling: "preserve",
+                                replaceUrl: true
                             });
                         }
                     },
@@ -294,9 +318,20 @@ class OrdersComponent {
         }
     }
     logout() {
-        localStorage.clear();
-        sessionStorage.clear();
-        this.router.navigate(["/"], { queryParamsHandling: "preserve" });
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: "Logout",
+            text: "Are you sure you want to logout ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout'
+        })
+            .then((result) => {
+            if (result.value) {
+                localStorage.clear();
+                sessionStorage.clear();
+                this.router.navigate(['/'], { queryParamsHandling: 'preserve' });
+            }
+        });
     }
 }
 OrdersComponent.ɵfac = function OrdersComponent_Factory(t) { return new (t || OrdersComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_global_service__WEBPACK_IMPORTED_MODULE_3__["GlobalService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"])); };
