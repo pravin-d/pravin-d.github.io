@@ -225,7 +225,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           this.route.queryParamMap.subscribe(function (paramsMap) {
-            _this._globalService.init(paramsMap['params']['encodedkey'], null, _this.router.navigate);
+            _this._globalService.init(paramsMap['params']['encodedkey'], paramsMap['params']['apiUrl'], _this.router.navigate);
           });
         }
       }]);
@@ -522,7 +522,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r15.billDetails.Currency ? ctx_r15.billDetails.Currency : "INR ", " ", ctx_r15.billDetails.GrossAmount / 100, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r15.billDetails.Currency ? ctx_r15.billDetails.Currency : "", " ", ctx_r15.billDetails.GrossAmount / 100, "");
       }
     }
 
@@ -622,7 +622,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("Payment failed for amount ", ctx_r11.billDetails.Currency ? ctx_r11.billDetails.Currency : "INR ", " ", ctx_r11.billDetails.GrossAmount / 100, " . Please try again.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("Payment failed for amount ", ctx_r11.billDetails.Currency ? ctx_r11.billDetails.Currency : "", " ", ctx_r11.billDetails.GrossAmount / 100, " . Please try again.");
       }
     }
 
@@ -2354,7 +2354,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "init",
         value: function init(encodedKey, idineUrl, navigate) {
           this.encodedKey = encodedKey;
-          this.idineUrl = idineUrl || "https://devonlineorders.innosolv-idine.com/api/ContactLessCustomerService";
+          this.idineUrl = idineUrl || "https://onlineorders.innosolv-idine.com/api/ContactLessCustomerService";
           var storedEncodedKey = localStorage.getItem('encodedKey');
 
           if (encodedKey && storedEncodedKey !== encodedKey.trim()) {
@@ -2558,7 +2558,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             'token': localStorage.getItem('token'),
             'encodedkey': this._globalservice.encodedKey
           });
-          return this.http.get("https://devonlineorders.innosolv-idine.com/api/ContactLessCustomerService/GetMenu", {
+          return this.http.get(this._globalservice.idineUrl + '/GetMenu', {
             headers: headers
           });
         }

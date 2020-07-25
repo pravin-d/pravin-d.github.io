@@ -99,7 +99,7 @@ class AppComponent {
     }
     ngOnInit() {
         this.route.queryParamMap.subscribe(paramsMap => {
-            this._globalService.init(paramsMap['params']['encodedkey'], null, this.router.navigate);
+            this._globalService.init(paramsMap['params']['encodedkey'], paramsMap['params']['apiUrl'], this.router.navigate);
         });
     }
 }
@@ -260,7 +260,7 @@ function EndingComponent_div_10_ng_container_7_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r15.billDetails.Currency ? ctx_r15.billDetails.Currency : "INR ", " ", ctx_r15.billDetails.GrossAmount / 100, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r15.billDetails.Currency ? ctx_r15.billDetails.Currency : "", " ", ctx_r15.billDetails.GrossAmount / 100, "");
 } }
 function EndingComponent_div_10_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 10);
@@ -310,7 +310,7 @@ function EndingComponent_div_13_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("Payment failed for amount ", ctx_r11.billDetails.Currency ? ctx_r11.billDetails.Currency : "INR ", " ", ctx_r11.billDetails.GrossAmount / 100, " . Please try again.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("Payment failed for amount ", ctx_r11.billDetails.Currency ? ctx_r11.billDetails.Currency : "", " ", ctx_r11.billDetails.GrossAmount / 100, " . Please try again.");
 } }
 function EndingComponent_div_14_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 14);
@@ -1201,7 +1201,7 @@ class GlobalService {
     }
     init(encodedKey, idineUrl, navigate) {
         this.encodedKey = encodedKey;
-        this.idineUrl = idineUrl || "https://devonlineorders.innosolv-idine.com/api/ContactLessCustomerService";
+        this.idineUrl = idineUrl || "https://onlineorders.innosolv-idine.com/api/ContactLessCustomerService";
         let storedEncodedKey = localStorage.getItem('encodedKey');
         if (encodedKey && storedEncodedKey !== encodedKey.trim()) {
             localStorage.clear();
@@ -1304,7 +1304,7 @@ class UserService {
             'token': localStorage.getItem('token'),
             'encodedkey': this._globalservice.encodedKey
         });
-        return this.http.get("https://devonlineorders.innosolv-idine.com/api/ContactLessCustomerService/GetMenu", { headers: headers });
+        return this.http.get(this._globalservice.idineUrl + '/GetMenu', { headers: headers });
     }
     placeOrder(body) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
